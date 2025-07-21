@@ -102,7 +102,7 @@ function getParamsEditableItems(
                 const overrideRemoved = removedOverrides[i];
                 const fieldItemPath = `${fieldsPath}[${i}]`;
                 return (
-                    <React.Fragment>
+                    <>
                         {(overrideRemoved && <span>{param.original}</span>) || (
                             <FormField
                                 formApi={formApi}
@@ -135,7 +135,7 @@ function getParamsEditableItems(
                                 Keep override
                             </a>
                         )}
-                    </React.Fragment>
+                    </>
                 );
             }
         }))
@@ -1033,7 +1033,7 @@ function gatherDetails(
             title: 'TOP-LEVEL ARGUMENTS',
             view: ((directory?.jsonnet && directory?.jsonnet.tlas) || []).map((i, j) => (
                 <label key={j}>
-                    {i.name}='{i.value}' {i.code && 'code'}
+                    {i.name}={`'${i.value}'`} {i.code && 'code'}
                 </label>
             )),
             edit: (formApi: FormApi) => (
@@ -1048,7 +1048,7 @@ function gatherDetails(
             title: 'EXTERNAL VARIABLES',
             view: ((directory.jsonnet && directory.jsonnet.extVars) || []).map((i, j) => (
                 <label key={j}>
-                    {i.name}='{i.value}' {i.code && 'code'}
+                    {i.name}={`'${i.value}'`} {i.code && 'code'}
                 </label>
             )),
             edit: (formApi: FormApi) => (

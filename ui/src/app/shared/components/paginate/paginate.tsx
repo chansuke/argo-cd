@@ -101,11 +101,11 @@ export function Paginate<T>({page, onPageChange, children, data, emptyState, pre
                         });
                 }
                 return (
-                    <React.Fragment>
+                    <>
                         <div className='paginate'>{paginator()}</div>
                         {data.length === 0 && emptyState ? emptyState() : children(pageSize === -1 ? data : data.slice(pageSize * page, pageSize * (page + 1)))}
                         <div className='paginate'>{pageCount > 1 && paginator()}</div>
-                    </React.Fragment>
+                    </>
                 );
             }}
         </DataLoader>

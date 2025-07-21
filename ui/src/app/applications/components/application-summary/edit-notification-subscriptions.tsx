@@ -161,7 +161,7 @@ export const EditNotificationSubscriptions = ({subscriptions, onAddNewSubscripti
                                 items={triggersList}
                                 onSelect={trigger => onEditSubscription(idx, {...subscription, trigger})}
                                 filterSuggestions={true}
-                                qeid='application-edit-notification-subscription-trigger'
+                                data-qe-id='application-edit-notification-subscription-trigger'
                             />
                         )}
                     </DataLoader>
@@ -187,7 +187,7 @@ export const EditNotificationSubscriptions = ({subscriptions, onAddNewSubscripti
                                 items={serviceList}
                                 onSelect={service => onEditSubscription(idx, {...subscription, service})}
                                 filterSuggestions={true}
-                                qeid='application-edit-notification-subscription-service'
+                                data-qe-id='application-edit-notification-subscription-service'
                             />
                         )}
                     </DataLoader>
@@ -204,7 +204,7 @@ export const EditNotificationSubscriptions = ({subscriptions, onAddNewSubscripti
                                 value: e.target.value
                             });
                         }}
-                        qe-id='application-edit-notification-subscription-value'
+                        data-qe-id='application-edit-notification-subscription-value'
                     />
                     <button className='button-close'>
                         <i className='fa fa-times' style={{cursor: 'pointer'}} onClick={() => onRemoveSubscription(idx)} />

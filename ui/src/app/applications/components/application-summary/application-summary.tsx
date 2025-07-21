@@ -346,8 +346,8 @@ export const ApplicationSummary = (props: ApplicationSummaryProps) => {
                     {urls
                         .map(item => item.split('|'))
                         .map((parts, i) => (
-                            <div className='application-summary__links-row'>
-                                <a key={i} href={parts.length > 1 ? parts[1] : parts[0]} target='_blank'>
+                            <div key={i} className='application-summary__links-row'>
+                                <a href={parts.length > 1 ? parts[1] : parts[0]} target='_blank' rel='noreferrer'>
                                     {parts[0]} &nbsp;
                                 </a>
                             </div>
@@ -437,7 +437,7 @@ export const ApplicationSummary = (props: ApplicationSummaryProps) => {
                 info.value
             ),
             titleEdit: (formApi: FormApi) => (
-                <React.Fragment>
+                <>
                     {i > 0 && (
                         <i
                             className='fa fa-sort-up application-summary__sort-icon'
@@ -455,10 +455,10 @@ export const ApplicationSummary = (props: ApplicationSummaryProps) => {
                             }}
                         />
                     )}
-                </React.Fragment>
+                </>
             ),
             edit: (formApi: FormApi) => (
-                <React.Fragment>
+                <>
                     <FormField formApi={formApi} field={`spec.info[${[i]}].value`} component={Text} />
                     <i
                         className='fa fa-times application-summary__remove-icon'
@@ -468,7 +468,7 @@ export const ApplicationSummary = (props: ApplicationSummaryProps) => {
                             setAdjustedCount(adjustedCount - 1);
                         }}
                     />
-                </React.Fragment>
+                </>
             )
         }))
         .concat({
@@ -529,7 +529,7 @@ export const ApplicationSummary = (props: ApplicationSummaryProps) => {
                             </div>
 
                             {app.spec.syncPolicy && app.spec.syncPolicy.automated && (
-                                <React.Fragment>
+                                <>
                                     <div className='row white-box__details-row'>
                                         <div className='columns small-12'>
                                             <div className='checkbox-container'>
@@ -626,7 +626,7 @@ export const ApplicationSummary = (props: ApplicationSummaryProps) => {
                                             )}
                                         </div>
                                     </div>
-                                </React.Fragment>
+                                </>
                             )}
                         </div>
                     </div>

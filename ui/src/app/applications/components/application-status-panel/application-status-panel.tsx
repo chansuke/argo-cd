@@ -309,7 +309,7 @@ export const ApplicationStatusPanel = ({application, showDiff, showOperation, sh
                     return await services.applications.getApplicationSyncWindowState(app.metadata.name, app.metadata.namespace);
                 }}>
                 {(data: models.ApplicationSyncWindowState) => (
-                    <React.Fragment>
+                    <>
                         {data.assignedWindows && (
                             <div className='application-status-panel__item' style={{position: 'relative'}}>
                                 {sectionLabel({
@@ -325,7 +325,7 @@ export const ApplicationStatusPanel = ({application, showDiff, showOperation, sh
                                 </div>
                             </div>
                         )}
-                    </React.Fragment>
+                    </>
                 )}
             </DataLoader>
             {showProgressiveSync && <ProgressiveSyncStatus application={application} />}

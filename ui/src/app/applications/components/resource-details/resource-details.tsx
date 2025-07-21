@@ -288,7 +288,7 @@ export const ResourceDetails = (props: ResourceDetailsProps) => {
                         return {controlledState, liveState, events, podState, execEnabled, execAllowed, logsAllowed, links, childResources, resourceActionsMenuItems};
                     }}>
                     {data => (
-                        <React.Fragment>
+                        <>
                             <div className='resource-details__header'>
                                 <div style={{display: 'flex', flexDirection: 'column', marginRight: '15px', alignItems: 'center', fontSize: '12px'}}>
                                     <ResourceIcon kind={selectedNode.kind} />
@@ -356,7 +356,7 @@ export const ResourceDetails = (props: ResourceDetailsProps) => {
                                 selectedTabKey={props.tab}
                                 onTabSelected={selected => appContext.navigation.goto('.', {tab: selected}, {replace: true})}
                             />
-                        </React.Fragment>
+                        </>
                     )}
                 </DataLoader>
             )}

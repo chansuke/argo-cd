@@ -29,7 +29,7 @@ export interface NameValue {
 
 export const NameValueEditor = (item: NameValue, onChange?: (item: NameValue) => any) => {
     return (
-        <React.Fragment>
+        <>
             <input
                 // disable chrome autocomplete
                 autoComplete='fake'
@@ -55,7 +55,7 @@ export const NameValueEditor = (item: NameValue, onChange?: (item: NameValue) =>
                 readOnly={!onChange}
             />
             &nbsp;
-        </React.Fragment>
+        </>
     );
 };
 
@@ -185,7 +185,7 @@ export const ArrayValueField = ReactForm.FormField(
         const values = liveParamArray ?? props.defaultVal ?? [];
 
         return (
-            <React.Fragment>
+            <>
                 <ResetOrDeleteButton
                     isPluginPar={props.isPluginPar}
                     getValue={getValue}
@@ -207,7 +207,7 @@ export const ArrayValueField = ReactForm.FormField(
                         }
                     }}
                 />
-            </React.Fragment>
+            </>
         );
     }
 );
@@ -226,7 +226,7 @@ export const StringValueField = ReactForm.FormField(
         const index = getValue()?.findIndex((val: {name: string; string: string}) => val.name === props.name) ?? -1;
 
         return (
-            <React.Fragment>
+            <>
                 <ResetOrDeleteButton
                     isPluginPar={props.isPluginPar}
                     getValue={getValue}
@@ -254,7 +254,7 @@ export const StringValueField = ReactForm.FormField(
                         title='Value'
                     />
                 </div>
-            </React.Fragment>
+            </>
         );
     }
 );
@@ -301,7 +301,7 @@ export const MapValueField = ReactForm.FormField(
         }
 
         return (
-            <React.Fragment>
+            <>
                 <ResetOrDeleteButton
                     isPluginPar={props.isPluginPar}
                     getValue={getValue}
@@ -326,7 +326,7 @@ export const MapValueField = ReactForm.FormField(
                         setValue([...getValue()]);
                     }}
                 />
-            </React.Fragment>
+            </>
         );
     }
 );

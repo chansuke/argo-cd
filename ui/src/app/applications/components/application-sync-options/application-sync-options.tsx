@@ -47,7 +47,7 @@ function booleanOption(name: string, label: string, defaultVal: boolean, props: 
     const index = options.findIndex(item => item.startsWith(prefix));
     const checked = index < 0 ? defaultVal : options[index].substring(prefix.length) === (invert ? 'false' : 'true');
     return (
-        <React.Fragment>
+        <>
             <Checkbox
                 id={`sync-option-${name}-${props.id}`}
                 checked={checked}
@@ -69,7 +69,7 @@ function booleanOption(name: string, label: string, defaultVal: boolean, props: 
                     {checked && <div className='application-sync-options__warning'>{warning}</div>}
                 </>
             )}
-        </React.Fragment>
+        </>
     );
 }
 

@@ -5,7 +5,7 @@ export const Repo = ({url, children}: {url: string; children?: React.ReactNode})
     const href = repoUrl(url);
     const content = children || url;
     return href !== null ? (
-        <a href={href} target='_blank'>
+        <a href={href} target='_blank' rel='noreferrer'>
             {content}
         </a>
     ) : (

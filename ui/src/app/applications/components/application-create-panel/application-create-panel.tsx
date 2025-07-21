@@ -54,7 +54,7 @@ const AutoSyncFormField = ReactFormField((props: {fieldApi: FieldApi; className:
     } = props;
     const automated = getValue() as models.Automated;
     return (
-        <React.Fragment>
+        <>
             <label>Sync Policy</label>
             <Select
                 value={automated ? auto : manual}
@@ -82,7 +82,7 @@ const AutoSyncFormField = ReactFormField((props: {fieldApi: FieldApi; className:
                     </div>
                 </div>
             )}
-        </React.Fragment>
+        </>
     );
 });
 
@@ -321,9 +321,9 @@ export const ApplicationCreatePanel = (props: {
                                                 <div className='columns small-2'>
                                                     <div style={{paddingTop: '1.5em'}}>
                                                         {(repoInfo && (
-                                                            <React.Fragment>
+                                                            <>
                                                                 <span>{(repoInfo.type || 'git').toUpperCase()}</span> <i className='fa fa-check' />
-                                                            </React.Fragment>
+                                                            </>
                                                         )) || (
                                                             <DropDownMenu
                                                                 anchor={() => (
@@ -379,7 +379,7 @@ export const ApplicationCreatePanel = (props: {
                                                 </div>
                                             </div>
                                             {(repoType === 'oci' && (
-                                                <React.Fragment>
+                                                <>
                                                     <RevisionFormField formApi={api} helpIconTop={'2.5em'} repoURL={app.spec.source.repoURL} repoType={repoType} />
                                                     <div className='argo-form-row'>
                                                         <DataLoader
@@ -404,10 +404,10 @@ export const ApplicationCreatePanel = (props: {
                                                             )}
                                                         </DataLoader>
                                                     </div>
-                                                </React.Fragment>
+                                                </>
                                             )) ||
                                                 (repoType === 'git' && (
-                                                    <React.Fragment>
+                                                    <>
                                                         <RevisionFormField formApi={api} helpIconTop={'2.5em'} repoURL={app.spec.source.repoURL} repoType={repoType} />
                                                         <div className='argo-form-row'>
                                                             <DataLoader
@@ -435,7 +435,7 @@ export const ApplicationCreatePanel = (props: {
                                                                 )}
                                                             </DataLoader>
                                                         </div>
-                                                    </React.Fragment>
+                                                    </>
                                                 )) || (
                                                     <DataLoader
                                                         input={{repoURL: app.spec.source.repoURL}}
@@ -592,7 +592,7 @@ export const ApplicationCreatePanel = (props: {
                                                     }
                                                 }
                                                 return (
-                                                    <React.Fragment>
+                                                    <>
                                                         <DropDownMenu
                                                             anchor={() => (
                                                                 <p>
@@ -616,7 +616,7 @@ export const ApplicationCreatePanel = (props: {
                                                                 api.setAllValues(updatedApp);
                                                             }}
                                                         />
-                                                    </React.Fragment>
+                                                    </>
                                                 );
                                             }}
                                         </DataLoader>

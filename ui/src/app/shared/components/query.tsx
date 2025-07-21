@@ -25,7 +25,7 @@ export class ObservableQuery extends React.Component<ObservableQueryProps> {
         super(props);
     }
 
-    public componentWillMount() {
+    public UNSAFE_componentWillMount() {
         this.search = new BehaviorSubject(this.appContext.router.history.location.search);
         this.stopListen = this.appContext.router.history.listen(location => {
             this.search.next(location.search);

@@ -42,7 +42,7 @@ export class YamlEditor<T> extends React.Component<
                         {(this.state.editing && (
                             <Consumer>
                                 {ctx => (
-                                    <React.Fragment>
+                                    <>
                                         <button
                                             onClick={async () => {
                                                 try {
@@ -84,7 +84,7 @@ export class YamlEditor<T> extends React.Component<
                                             className='argo-button argo-button--base-o'>
                                             Cancel
                                         </button>
-                                    </React.Fragment>
+                                    </>
                                 )}
                             </Consumer>
                         )) || (

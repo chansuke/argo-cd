@@ -26,7 +26,7 @@ export const AccountDetails = (props: RouteComponentProps<{name: string}>) => {
             <div className='argo-container account-details'>
                 <DataLoader input={props.match.params.name} load={(name: string) => services.accounts.get(name)}>
                     {(account: Account) => (
-                        <React.Fragment>
+                        <>
                             <div className='white-box'>
                                 <div className='white-box__details'>
                                     <div className='row white-box__details-row'>
@@ -147,12 +147,12 @@ export const AccountDetails = (props: RouteComponentProps<{name: string}>) => {
                                         </div>
                                     )) || (
                                         <div className='white-box'>
-                                            <p>Account has no tokens. Click 'Generate New' to create one.</p>
+                                            <p>Account has no tokens. Click &apos;Generate New&apos; to create one.</p>
                                         </div>
                                     )
                                 }
                             </DataLoader>
-                        </React.Fragment>
+                        </>
                     )}
                 </DataLoader>
             </div>

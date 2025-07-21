@@ -18,7 +18,7 @@ const CustomTopBar = (props: {toolbar?: Toolbar | Observable<Toolbar>}) => {
         <div className='top-bar row top-bar' key='tool-bar'>
             <DataLoader load={() => loadToolbar}>
                 {toolbar => (
-                    <React.Fragment>
+                    <>
                         <div className='column small-11 flex-top-bar_center'>
                             <div className='top-bar'>
                                 <div className='text-center'>
@@ -36,7 +36,7 @@ const CustomTopBar = (props: {toolbar?: Toolbar | Observable<Toolbar>}) => {
                             </div>
                         </div>
                         <div className='columns small-1 top-bar__right-side'>{toolbar.tools}</div>
-                    </React.Fragment>
+                    </>
                 )}
             </DataLoader>
         </div>

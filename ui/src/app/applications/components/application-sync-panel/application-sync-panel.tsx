@@ -40,7 +40,7 @@ export const ApplicationSyncPanel = ({application, selectedResource, hide}: {app
                     header={
                         <div>
                             <button
-                                qe-id='application-sync-panel-button-synchronize'
+                                data-qe-id='application-sync-panel-button-synchronize'
                                 className='argo-button argo-button--base'
                                 disabled={isPending}
                                 onClick={() => form.submitForm(null)}>
@@ -227,7 +227,7 @@ export const ApplicationSyncPanel = ({application, selectedResource, hide}: {app
                                                             <Tooltip content={<div style={{wordBreak: 'break-all'}}>{resKey}</div>}>
                                                                 <div className='container'>
                                                                     {isLongLabel ? (
-                                                                        <label htmlFor={resKey} content-start={contentStart} content-end={contentEnd} />
+                                                                        <label htmlFor={resKey} data-content-start={contentStart} data-content-end={contentEnd} />
                                                                     ) : (
                                                                         <label htmlFor={resKey}>{resKey}</label>
                                                                     )}

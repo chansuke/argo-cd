@@ -234,7 +234,7 @@ export const ApplicationOperationState: React.StatelessComponent<Props> = ({appl
                 </div>
             </div>
             {syncResult && syncResult.resources && syncResult.resources.length > 0 && (
-                <React.Fragment>
+                <>
                     <div style={{display: 'flex'}}>
                         <label style={{display: 'block', marginBottom: '1em'}}>RESULT</label>
                         <div style={{marginLeft: 'auto'}}>
@@ -328,7 +328,7 @@ export const ApplicationOperationState: React.StatelessComponent<Props> = ({appl
                             <div style={{textAlign: 'center', marginTop: '2em', fontSize: '20px'}}>No Sync Results match filter</div>
                         )}
                     </div>
-                </React.Fragment>
+                </>
             )}
         </div>
     );

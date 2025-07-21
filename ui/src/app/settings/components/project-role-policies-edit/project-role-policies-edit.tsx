@@ -24,9 +24,9 @@ const actions = ['get', 'create', 'update', 'delete', 'sync', 'override'];
 export const ProjectRolePoliciesEdit = (props: ProjectRolePoliciesProps) => (
     <DataLoader load={() => services.applications.list([props.projName], {fields: ['items.metadata.name']}).then(list => list.items)}>
         {applications => (
-            <React.Fragment>
+            <>
                 <p>POLICY RULES</p>
-                <div>Manage this role's permissions to applications, appsets, repositories, clusters, exec and logs</div>
+                <div>Manage this role&apos;s permissions to applications, appsets, repositories, clusters, exec and logs</div>
                 <div className='argo-table-list'>
                     <div className='argo-table-list__head'>
                         <div className='row'>
@@ -64,7 +64,7 @@ export const ProjectRolePoliciesEdit = (props: ProjectRolePoliciesProps) => (
                         </div>
                     </div>
                 </div>
-            </React.Fragment>
+            </>
         )}
     </DataLoader>
 );

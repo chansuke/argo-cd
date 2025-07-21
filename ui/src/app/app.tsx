@@ -163,7 +163,7 @@ export class App extends React.Component<{}, {popupProps: PopupProps; showVersio
             const url = 'https://github.com/argoproj/argo-cd/issues/new?labels=bug&template=bug_report.md';
 
             return (
-                <React.Fragment>
+                <>
                     <p>Something went wrong!</p>
                     <p>
                         Consider submitting an issue <a href={url}>here</a>.
@@ -171,12 +171,12 @@ export class App extends React.Component<{}, {popupProps: PopupProps; showVersio
                     <br />
                     <p>Stacktrace:</p>
                     <pre>{stack}</pre>
-                </React.Fragment>
+                </>
             );
         }
 
         return (
-            <React.Fragment>
+            <>
                 <Helmet>
                     <link rel='icon' type='image/png' href={`${base}assets/favicon/favicon-32x32.png`} sizes='32x32' />
                     <link rel='icon' type='image/png' href={`${base}assets/favicon/favicon-16x16.png`} sizes='16x16' />
@@ -223,7 +223,7 @@ export class App extends React.Component<{}, {popupProps: PopupProps; showVersio
                 </PageContext.Provider>
                 <Notifications notifications={this.notificationsManager.notifications} />
                 <VersionPanel version={versionLoader} isShown={this.state.showVersionPanel} onClose={() => this.setState({showVersionPanel: false})} />
-            </React.Fragment>
+            </>
         );
     }
 

@@ -11,12 +11,12 @@ export interface Var {
 }
 
 const VarInputEditor = (item: Var, onChange: (item: Var) => any) => (
-    <React.Fragment>
+    <>
         {NameValueEditor(item, onChange)}
         &nbsp;
         <Checkbox checked={!!item.code} onChange={val => onChange({...item, code: val})} />
         &nbsp;
-    </React.Fragment>
+    </>
 );
 
 export const VarsInputField = ReactForm.FormField((props: {fieldApi: ReactForm.FieldApi}) => {

@@ -84,7 +84,7 @@ export const ApplicationDeploymentHistoryDetails = ({app, info, index}: props) =
     return (
         <>
             {info.sources === undefined ? (
-                <React.Fragment>
+                <>
                     <div>
                         <div className='row'>
                             <div className='columns small-3'>Revision:</div>
@@ -127,7 +127,7 @@ export const ApplicationDeploymentHistoryDetails = ({app, info, index}: props) =
                     ) : (
                         getCollapsedSection(null, recentDeployments[index].source.repoURL)
                     )}
-                </React.Fragment>
+                </>
             ) : (
                 info.sources.map((source, i) => (
                     <React.Fragment key={`${index}_${i}`}>
@@ -170,7 +170,7 @@ export const ApplicationDeploymentHistoryDetails = ({app, info, index}: props) =
                                         }}
                                         load={src => services.repos.appDetails(src, src.appName, app.spec.project, i, recentDeployments[index].id)}>
                                         {(details: models.RepoAppDetails) => (
-                                            <React.Fragment>
+                                            <>
                                                 <div id={'floating_title_' + i} className='editable-panel__sticky-title'>
                                                     <div style={{marginTop: '0px'}}>
                                                         <div>Source {i + 1} Parameters</div>
@@ -189,7 +189,7 @@ export const ApplicationDeploymentHistoryDetails = ({app, info, index}: props) =
                                                     details={details}
                                                     tempSource={{...source, targetRevision: recentDeployments[index].revisions[i]}}
                                                 />
-                                            </React.Fragment>
+                                            </>
                                         )}
                                     </DataLoader>
                                 </div>

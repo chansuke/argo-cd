@@ -57,11 +57,11 @@ export const Page = (props: PageProps) => {
                 <div className={`${props.hideAuth ? 'page-wrapper' : ''} ${pref.hideSidebar ? 'sb-page-wrapper__sidebar-collapsed' : 'sb-page-wrapper'}`}>
                     <ArgoPage
                         title={props.title}
-                        children={props.children}
                         topBarTitle={props.topBarTitle}
                         useTitleOnly={props.useTitleOnly}
-                        toolbar={!props.hideAuth ? AddAuthToToolbar(props.toolbar, ctx) : props.toolbar}
-                    />
+                        toolbar={!props.hideAuth ? AddAuthToToolbar(props.toolbar, ctx) : props.toolbar}>
+                        {props.children}
+                    </ArgoPage>
                 </div>
             )}
         </DataLoader>

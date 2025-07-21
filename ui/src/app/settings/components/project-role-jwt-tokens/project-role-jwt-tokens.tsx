@@ -28,7 +28,7 @@ export const ProjectRoleJWTTokens = (props: ProjectRoleJWTTokensProps) => {
     return (
         <Consumer>
             {ctx => (
-                <React.Fragment>
+                <>
                     <h4 style={{marginTop: '20px'}}>
                         JWT Tokens
                         {progress !== null && <ProgressPopup title={progress.title} percentage={progress.percentage} onClose={() => setProgress(null)} />}
@@ -107,7 +107,7 @@ export const ProjectRoleJWTTokens = (props: ProjectRoleJWTTokensProps) => {
                             </form>
                         )}
                     </Form>
-                </React.Fragment>
+                </>
             )}
         </Consumer>
     );

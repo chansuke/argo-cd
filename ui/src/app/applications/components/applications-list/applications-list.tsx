@@ -258,9 +258,9 @@ const SearchBar = (props: {content: string; ctx: ContextApis; apps: models.Appli
             )}
             wrapperProps={{className: 'applications-list__search-wrapper'}}
             renderItem={item => (
-                <React.Fragment>
+                <>
                     <i className='icon argo-icon-application' /> {item.label}
-                </React.Fragment>
+                </>
             )}
             onSelect={val => {
                 const selectedApp = apps?.find(app => {
@@ -282,19 +282,19 @@ const FlexTopBar = (props: {toolbar: Toolbar | Observable<Toolbar>}) => {
     const ctx = React.useContext(Context);
     const loadToolbar = AddAuthToToolbar(props.toolbar, ctx);
     return (
-        <React.Fragment>
+        <>
             <div className='top-bar row flex-top-bar' key='tool-bar'>
                 <DataLoader load={() => loadToolbar}>
                     {toolbar => (
-                        <React.Fragment>
+                        <>
                             <div className='flex-top-bar__actions'>
                                 {toolbar.actionMenu && (
-                                    <React.Fragment>
+                                    <>
                                         {toolbar.actionMenu.items.map((item, i) => (
-                                            <Tooltip className='custom-tooltip' content={item.title}>
+                                            <Tooltip key={i} className='custom-tooltip' content={item.title}>
                                                 <button
                                                     disabled={!!item.disabled}
-                                                    qe-id={item.qeId}
+                                                    data-qe-id={item.qeId}
                                                     className='argo-button argo-button--base'
                                                     onClick={() => item.action()}
                                                     style={{marginRight: 2}}
@@ -304,16 +304,16 @@ const FlexTopBar = (props: {toolbar: Toolbar | Observable<Toolbar>}) => {
                                                 </button>
                                             </Tooltip>
                                         ))}
-                                    </React.Fragment>
+                                    </>
                                 )}
                             </div>
                             <div className='flex-top-bar__tools'>{toolbar.tools}</div>
-                        </React.Fragment>
+                        </>
                     )}
                 </DataLoader>
             </div>
             <div className='flex-top-bar__padder' />
-        </React.Fragment>
+        </>
     );
 };
 
@@ -413,7 +413,7 @@ export const ApplicationsList = (props: RouteComponentProps<{}>) => {
                                                 }
                                             };
                                             return (
-                                                <React.Fragment>
+                                                <>
                                                     <FlexTopBar
                                                         toolbar={{
                                                             tools: (
@@ -496,7 +496,7 @@ export const ApplicationsList = (props: RouteComponentProps<{}>) => {
                                                                 <h4>No applications available to you just yet</h4>
                                                                 <h5>Create new application to start managing resources in your cluster</h5>
                                                                 <button
-                                                                    qe-id='applications-list-button-create-application'
+                                                                    data-qe-id='applications-list-button-create-application'
                                                                     className='argo-button argo-button--base'
                                                                     onClick={() => ctx.navigation.goto('.', {new: JSON.stringify({})}, {replace: true})}>
                                                                     Create application
@@ -627,7 +627,7 @@ export const ApplicationsList = (props: RouteComponentProps<{}>) => {
                                                         header={
                                                             <div>
                                                                 <button
-                                                                    qe-id='applications-list-button-create'
+                                                                    data-qe-id='applications-list-button-create'
                                                                     className='argo-button argo-button--base'
                                                                     disabled={isAppCreatePending}
                                                                     onClick={() => createApi && createApi.submitForm(null)}>
@@ -635,7 +635,7 @@ export const ApplicationsList = (props: RouteComponentProps<{}>) => {
                                                                     Create
                                                                 </button>{' '}
                                                                 <button
-                                                                    qe-id='applications-list-button-cancel'
+                                                                    data-qe-id='applications-list-button-cancel'
                                                                     onClick={() => ctx.navigation.goto('.', {new: null}, {replace: true})}
                                                                     className='argo-button argo-button--base-o'>
                                                                     Cancel
@@ -666,7 +666,7 @@ export const ApplicationsList = (props: RouteComponentProps<{}>) => {
                                                             />
                                                         )}
                                                     </SlidingPanel>
-                                                </React.Fragment>
+                                                </>
                                             );
                                         }}
                                     </DataLoader>

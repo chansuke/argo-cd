@@ -706,7 +706,7 @@ export class ReposList extends React.Component<
                                                         the Source Hydrator for a repository, you must save two credentials: a read credential for pulling manifests and a write
                                                         credential for pushing hydrated manifests. If you add a write credential for a repository, then{' '}
                                                         <strong>any Application that can sync from the repo can also push hydrated manifests to that repo.</strong> Do not use this
-                                                        feature until you've read its documentation and understand the security implications.
+                                                        feature until you&apos;ve read its documentation and understand the security implications.
                                                     </p>
                                                     <div className='argo-form-row'>
                                                         <FormField formApi={formApi} label='Save as write credential' field='write' component={CheckboxField} />
@@ -826,7 +826,7 @@ export class ReposList extends React.Component<
                                                         <HelpIcon title='This setting is ignored when creating as credential template.' />
                                                     </div>
                                                     {formApi.getFormState().values.type === 'git' && (
-                                                        <React.Fragment>
+                                                        <>
                                                             <div className='argo-form-row'>
                                                                 <FormField formApi={formApi} label='Force HTTP basic auth' field='forceHttpBasicAuth' component={CheckboxField} />
                                                             </div>
@@ -834,7 +834,7 @@ export class ReposList extends React.Component<
                                                                 <FormField formApi={formApi} label='Enable LFS support (Git only)' field='enableLfs' component={CheckboxField} />
                                                                 <HelpIcon title='This setting is ignored when creating as credential template.' />
                                                             </div>
-                                                        </React.Fragment>
+                                                        </>
                                                     )}
                                                     <div className='argo-form-row'>
                                                         <FormField formApi={formApi} label='Proxy (optional)' field='proxy' component={Text} />
@@ -911,7 +911,7 @@ export class ReposList extends React.Component<
                                                         <HelpIcon title='This setting is ignored when creating as credential template.' />
                                                     </div>
                                                     {formApi.getFormState().values.ghType === 'GitHub Enterprise' && (
-                                                        <React.Fragment>
+                                                        <>
                                                             <div className='argo-form-row'>
                                                                 <FormField
                                                                     formApi={formApi}
@@ -928,7 +928,7 @@ export class ReposList extends React.Component<
                                                                     component={TextArea}
                                                                 />
                                                             </div>
-                                                        </React.Fragment>
+                                                        </>
                                                     )}
                                                     <div className='argo-form-row'>
                                                         <FormField formApi={formApi} label='Proxy (optional)' field='proxy' component={Text} />

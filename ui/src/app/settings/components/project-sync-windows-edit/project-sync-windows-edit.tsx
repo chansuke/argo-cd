@@ -22,9 +22,9 @@ function helpTip(text: string) {
 }
 
 export const ProjectSyncWindowApplicationsEdit = (props: ProjectSyncWindowProps) => (
-    <React.Fragment>
+    <>
         <p>APPLICATIONS</p>
-        <div>Manage applications assigned to this window ("*" for any)</div>
+        <div>Manage applications assigned to this window (&quot;*&quot; for any)</div>
         <div className='argo-table-list__row'>
             {(props.window.applications || []).map((a, i) => (
                 <Attribute
@@ -48,13 +48,13 @@ export const ProjectSyncWindowApplicationsEdit = (props: ProjectSyncWindowProps)
                 </div>
             </div>
         </div>
-    </React.Fragment>
+    </>
 );
 
 export const ProjectSyncWindowNamespaceEdit = (props: ProjectSyncWindowProps) => (
-    <React.Fragment>
+    <>
         <p>NAMESPACES</p>
-        <div>Manage namespaces assigned to this window ("*" for any)</div>
+        <div>Manage namespaces assigned to this window (&quot;*&quot; for any)</div>
         <div className='argo-table-list__row'>
             {(props.window.namespaces || []).map((n, i) => (
                 <Attribute
@@ -78,13 +78,13 @@ export const ProjectSyncWindowNamespaceEdit = (props: ProjectSyncWindowProps) =>
                 </div>
             </div>
         </div>
-    </React.Fragment>
+    </>
 );
 
 export const ProjectSyncWindowClusterEdit = (props: ProjectSyncWindowProps) => (
-    <React.Fragment>
+    <>
         <p>CLUSTERS</p>
-        <div>Manage clusters assigned to this window ("*" for any)</div>
+        <div>Manage clusters assigned to this window (&quot;*&quot; for any)</div>
         <div className='argo-table-list__row'>
             {(props.window.clusters || []).map((c, i) => (
                 <Attribute
@@ -108,7 +108,7 @@ export const ProjectSyncWindowClusterEdit = (props: ProjectSyncWindowProps) => (
                 </div>
             </div>
         </div>
-    </React.Fragment>
+    </>
 );
 
 interface AttributeProps {
@@ -159,7 +159,7 @@ function generateSchedule(minute?: string, hour?: string, dom?: string, month?: 
 }
 
 export const ProjectSyncWindowScheduleEdit = (props: ProjectSyncWindowProps) => (
-    <React.Fragment>
+    <>
         <p>Schedule</p>
         <div className='argo-table-list__head'>
             <div className='row'>
@@ -173,7 +173,7 @@ export const ProjectSyncWindowScheduleEdit = (props: ProjectSyncWindowProps) => 
         <div className='row project-sync-windows-panel__form-row'>
             <Schedule key='schedule' field={'window.schedule'} formApi={props.formApi} />
         </div>
-    </React.Fragment>
+    </>
 );
 
 interface ScheduleProps {
@@ -241,7 +241,7 @@ function setRanges(config: string[]): string {
 class ScheduleWrapper extends React.Component<ScheduleProps, any> {
     public render() {
         return (
-            <React.Fragment>
+            <>
                 <div className='columns small-2'>
                     <select
                         className='argo-field project-sync-windows-panel__options-wrapper'
@@ -418,7 +418,7 @@ class ScheduleWrapper extends React.Component<ScheduleProps, any> {
                         </option>
                     </select>
                 </div>
-            </React.Fragment>
+            </>
         );
     }
 

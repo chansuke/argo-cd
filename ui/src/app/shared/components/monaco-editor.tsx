@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import * as monacoEditor from 'monaco-editor';
 import {services} from '../services';
-import {getTheme, useSystemTheme} from '../utils';
+import {getTheme} from '../utils';
 
 export interface EditorInput {
     text: string;
@@ -30,18 +30,33 @@ const MonacoEditorLazy = React.lazy(() =>
         const Component = (props: MonacoProps) => {
             const [height, setHeight] = React.useState(0);
             const [theme, setTheme] = React.useState('dark');
+            const [systemTheme, setSystemTheme] = React.useState<string>('dark');
 
             React.useEffect(() => {
-                const destroySystemThemeListener = useSystemTheme(systemTheme => {
-                    if (theme === 'auto') {
-                        monaco.editor.setTheme(systemTheme === 'dark' ? 'vs-dark' : 'vs');
-                    }
-                });
+                const dark = window.matchMedia('(prefers-color-scheme: dark)');
+                const light = window.matchMedia('(prefers-color-scheme: light)');
+
+                const listener = () => {
+                    setSystemTheme(dark.matches ? 'dark' : 'light');
+                };
+
+                dark.addEventListener('change', listener);
+                light.addEventListener('change', listener);
+
+                // Set initial theme
+                listener();
 
                 return () => {
-                    destroySystemThemeListener();
+                    dark.removeEventListener('change', listener);
+                    light.removeEventListener('change', listener);
                 };
-            }, [theme]);
+            }, []);
+
+            React.useEffect(() => {
+                if (theme === 'auto') {
+                    monaco.editor.setTheme(systemTheme === 'dark' ? 'vs-dark' : 'vs');
+                }
+            }, [theme, systemTheme]);
 
             React.useEffect(() => {
                 const subscription = services.viewPreferences.getPreferences().subscribe(preferences => {

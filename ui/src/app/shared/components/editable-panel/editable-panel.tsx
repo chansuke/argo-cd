@@ -92,7 +92,7 @@ export class EditablePanel<T = {}> extends React.Component<EditablePanelProps<T>
                                             </button>
                                         )}
                                         {this.state.edit && (
-                                            <React.Fragment>
+                                            <>
                                                 <button
                                                     disabled={this.state.saving}
                                                     onClick={() => !this.state.saving && this.formApi.submitForm(null)}
@@ -108,7 +108,7 @@ export class EditablePanel<T = {}> extends React.Component<EditablePanelProps<T>
                                                     className='argo-button argo-button--base-o'>
                                                     Cancel
                                                 </button>
-                                            </React.Fragment>
+                                            </>
                                         )}
                                     </div>
                                 )}
@@ -124,7 +124,7 @@ export class EditablePanel<T = {}> extends React.Component<EditablePanelProps<T>
                                 )}
                                 {this.props.title && <p>{this.props.title}</p>}
                                 {(!this.state.edit && (
-                                    <React.Fragment>
+                                    <>
                                         {this.props.view}
                                         {this.props.items
                                             .filter(item => item.view)
@@ -137,7 +137,7 @@ export class EditablePanel<T = {}> extends React.Component<EditablePanelProps<T>
                                                     </div>
                                                 </React.Fragment>
                                             ))}
-                                    </React.Fragment>
+                                    </>
                                 )) || (
                                     <Form
                                         getApi={api => (this.formApi = api)}
@@ -164,7 +164,7 @@ export class EditablePanel<T = {}> extends React.Component<EditablePanelProps<T>
                                         defaultValues={this.props.values}
                                         validateError={this.props.validate}>
                                         {api => (
-                                            <React.Fragment>
+                                            <>
                                                 {this.props.edit && this.props.edit(api)}
                                                 {this.props.items.map(item => (
                                                     <React.Fragment key={item.key || item.title}>
@@ -175,7 +175,7 @@ export class EditablePanel<T = {}> extends React.Component<EditablePanelProps<T>
                                                         </div>
                                                     </React.Fragment>
                                                 ))}
-                                            </React.Fragment>
+                                            </>
                                         )}
                                     </Form>
                                 )}

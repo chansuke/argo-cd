@@ -137,10 +137,6 @@ export const PodsLogsViewer = (props: PodLogsProps) => {
         setHighlight(filter === '' ? matchNothing : new RegExp(filter.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g' + (matchCase ? '' : 'i')));
     }, [filter, matchCase]);
 
-    if (!containerName || containerName === '') {
-        return <div>Pod does not have container with name {containerName}</div>;
-    }
-
     useEffect(() => setScrollToBottom(true), [follow]);
 
     useEffect(() => {
@@ -190,6 +186,12 @@ export const PodsLogsViewer = (props: PodLogsProps) => {
 
         return () => logsSource.unsubscribe();
     }, [applicationName, applicationNamespace, namespace, podName, group, kind, name, containerName, tail, follow, sinceSeconds, filter, previous, matchCase]);
+
+    const preferenceLoader = React.useCallback(() => services.viewPreferences.getPreferences(), []);
+
+    if (!containerName || containerName === '') {
+        return <div>Pod does not have container with name {containerName}</div>;
+    }
 
     const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
         if (event.deltaY < 0) setScrollToBottom(false);
@@ -259,12 +261,11 @@ export const PodsLogsViewer = (props: PodLogsProps) => {
         </div>
     );
 
-    const preferenceLoader = React.useCallback(() => services.viewPreferences.getPreferences(), []);
     return (
         <DataLoader load={preferenceLoader}>
             {(prefs: ViewPreferences) => {
                 return (
-                    <React.Fragment>
+                    <>
                         <div className='pod-logs-viewer__settings'>
                             <span>
                                 <FollowToggleButton follow={follow} setFollow={setFollowWithQueryParams} />
@@ -315,7 +316,7 @@ export const PodsLogsViewer = (props: PodLogsProps) => {
                                 <AutoSizer>{({width, height}: {width: number; height: number}) => logsContent(width, height, prefs.appDetails.wrapLines, prefs)}</AutoSizer>
                             )}
                         </div>
-                    </React.Fragment>
+                    </>
                 );
             }}
         </DataLoader>

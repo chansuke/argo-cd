@@ -149,9 +149,9 @@ export const ClusterDetails = (props: RouteComponentProps<{server: string}>) => 
                                                     Math.max(10 - moment(now).diff(moment(cluster.info.connectionState.attemptedAt)) / 1000, 1)
                                                 );
                                                 return (
-                                                    <React.Fragment>
+                                                    <>
                                                         <Timestamp date={cluster.info.connectionState.attemptedAt} /> (next refresh in {secondsBeforeRefresh} seconds)
-                                                    </React.Fragment>
+                                                    </>
                                                 );
                                             }}
                                         </Ticker>

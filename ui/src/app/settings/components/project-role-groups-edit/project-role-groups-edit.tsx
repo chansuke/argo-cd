@@ -12,7 +12,7 @@ interface ProjectRoleGroupsProps {
 }
 
 export const ProjectRoleGroupsEdit = (props: ProjectRoleGroupsProps) => (
-    <React.Fragment>
+    <>
         <p>GROUPS</p>
         <div>OIDC group names to bind to this role</div>
         {
@@ -58,7 +58,7 @@ export const ProjectRoleGroupsEdit = (props: ProjectRoleGroupsProps) => (
                 </div>
             )}
         </Form>
-    </React.Fragment>
+    </>
 );
 
 interface GroupProps {
@@ -74,17 +74,15 @@ function removeEl(items: any[], index: number) {
     return items;
 }
 
-class GroupWrapper extends React.Component<GroupProps, any> {
-    public render() {
-        return (
-            <div className='row'>
-                <div className='columns small-11'>{this.props.groupName}</div>
-                <div className='columns small-1'>
-                    <i className='fa fa-times' onClick={() => this.props.deleteGroup()} style={{cursor: 'pointer'}} />
-                </div>
+function GroupWrapper(props: GroupProps) {
+    return (
+        <div className='row'>
+            <div className='columns small-11'>{props.groupName}</div>
+            <div className='columns small-1'>
+                <i className='fa fa-times' onClick={() => props.deleteGroup()} style={{cursor: 'pointer'}} />
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 const Group = ReactForm.FormField(GroupWrapper);

@@ -252,7 +252,7 @@ function renderFilteredNode(node: {count: number} & dagre.Node, onClearFilter: (
         indicators.push(count--);
     }
     return (
-        <React.Fragment>
+        <>
             <div className='application-resource-tree__node' style={{left: node.x, top: node.y, width: node.width, height: node.height}}>
                 <div className='application-resource-tree__node-kind-icon '>
                     <i className='icon fa fa-filter' />
@@ -270,7 +270,7 @@ function renderFilteredNode(node: {count: number} & dagre.Node, onClearFilter: (
                     style={{left: node.x + i * 2, top: node.y + i * 2, width: node.width, height: node.height}}
                 />
             ))}
-        </React.Fragment>
+        </>
     );
 }
 
@@ -281,7 +281,7 @@ function renderGroupedNodes(props: ApplicationResourceTreeProps, node: {count: n
         indicators.push(count--);
     }
     return (
-        <React.Fragment>
+        <>
             <div className='application-resource-tree__node' style={{left: node.x, top: node.y, width: node.width, height: node.height}}>
                 <div className='application-resource-tree__node-kind-icon'>
                     <ResourceIcon kind={node.kind} />
@@ -313,7 +313,7 @@ function renderGroupedNodes(props: ApplicationResourceTreeProps, node: {count: n
                     style={{left: node.x + i * 2, top: node.y + i * 2, width: node.width, height: node.height}}
                 />
             ))}
-        </React.Fragment>
+        </>
     );
 }
 
@@ -578,7 +578,7 @@ function renderPodGroupByStatus(props: ApplicationResourceTreeProps, node: any, 
     return (
         <div className='application-resource-tree__node--lower-section__pod-group__pod-container__pods'>
             {pods.length !== 0 && showPodGroupByStatus ? (
-                <React.Fragment>
+                <>
                     <div className={`pod-view__node__pod pod-view__node__pod--${pods[0].health.toLowerCase()}`}>
                         <PodHealthIcon state={{status: pods[0].health, message: ''}} key={pods[0].uid} />
                     </div>
@@ -595,7 +595,7 @@ function renderPodGroupByStatus(props: ApplicationResourceTreeProps, node: any, 
                             </span>
                         </a>
                     </div>
-                </React.Fragment>
+                </>
             ) : (
                 pods.map(
                     pod =>

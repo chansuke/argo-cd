@@ -54,9 +54,9 @@ export function helpTip(text: string) {
 //<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
 //this will replace all <i> fa-spin </i> icons as they are currently misbehaving with no fix available.
 
-export const SpinningIcon = ({color, qeId}: {color: string; qeId: string}) => {
+export const SpinningIcon = ({color, dataQeId}: {color: string; dataQeId: string}) => {
     return (
-        <svg className='icon spin' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' style={{color}} qe-id={qeId}>
+        <svg className='icon spin' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' style={{color}} data-qe-id={dataQeId}>
             <path
                 fill={color}
                 d='M222.7 32.1c5 16.9-4.6 34.8-21.5 39.8C121.8 95.6 64 169.1 64 256c0 106 86 192 192 192s192-86 192-192c0-86.9-57.8-160.4-137.1-184.1c-16.9-5-26.6-22.9-21.5-39.8s22.9-26.6 39.8-21.5C434.9 42.1 512 140 512 256c0 141.4-114.6 256-256 256S0 397.4 0 256C0 140 77.1 42.1 182.9 10.6c16.9-5 34.8 4.6 39.8 21.5z'
@@ -88,7 +88,7 @@ export async function deleteApplication(appName: string, appNamespace: string, a
                 <p>
                     Are you sure you want to delete the <strong>Application</strong> <kbd>{appName}</kbd>?
                     <span style={{display: 'block', marginBottom: '10px'}} />
-                    Deleting the application in <kbd>foreground</kbd> or <kbd>background</kbd> mode will delete all the application's managed resources, which can be{' '}
+                    Deleting the application in <kbd>foreground</kbd> or <kbd>background</kbd> mode will delete all the application&apos;s managed resources, which can be{' '}
                     <strong>dangerous</strong>. Be sure you understand the effects of deleting this resource before continuing. Consider asking someone to review the change first.
                 </p>
                 <div className='argo-form-row'>
@@ -96,7 +96,7 @@ export async function deleteApplication(appName: string, appNamespace: string, a
                         label={`Please type '${appName}' to confirm the deletion of the resource`}
                         formApi={api}
                         field='applicationName'
-                        qeId='name-field-delete-confirmation'
+                        data-qe-id='name-field-delete-confirmation'
                         component={Text}
                     />
                 </div>
@@ -152,15 +152,15 @@ export async function confirmSyncingAppOfApps(apps: appModels.Application[], api
         api => (
             <div>
                 <p>
-                    Are you sure you want to sync the application '{appNameList}' which contain(s) multiple apps with 'replace' option? This action will delete and recreate all
-                    apps linked to '{appNameList}'.
+                    Are you sure you want to sync the application &apos;{appNameList}&apos; which contain(s) multiple apps with &apos;replace&apos; option? This action will delete
+                    and recreate all apps linked to &apos;{appNameList}&apos;.
                 </p>
                 <div className='argo-form-row'>
                     <FormField
                         label={`Please type '${appNameList}' to confirm the Syncing of the resource`}
                         formApi={api}
                         field='applicationName'
-                        qeId='name-field-delete-confirmation'
+                        data-qe-id='name-field-delete-confirmation'
                         component={Text}
                     />
                 </div>
@@ -238,9 +238,9 @@ export const OperationPhaseIcon = ({app, isButton}: {app: appModels.Application;
             break;
     }
     return className.includes('fa-spin') ? (
-        <SpinningIcon color={color} qeId='utils-operations-status-title' />
+        <SpinningIcon color={color} dataQeId='utils-operations-status-title' />
     ) : (
-        <i title={getOperationStateTitle(app)} qe-id='utils-operations-status-title' className={className} style={{color}} />
+        <i title={getOperationStateTitle(app)} data-qe-id='utils-operations-status-title' className={className} style={{color}} />
     );
 };
 
@@ -265,9 +265,9 @@ export const HydrateOperationPhaseIcon = ({operationState, isButton}: {operation
             break;
     }
     return className.includes('fa-spin') ? (
-        <SpinningIcon color={color} qeId='utils-operations-status-title' />
+        <SpinningIcon color={color} dataQeId='utils-operations-status-title' />
     ) : (
-        <i title={operationState.phase} qe-id='utils-operations-status-title' className={className} style={{color}} />
+        <i title={operationState.phase} data-qe-id='utils-operations-status-title' className={className} style={{color}} />
     );
 };
 
@@ -308,11 +308,11 @@ export const ComparisonStatusIcon = ({
             break;
     }
     return className.includes('fa-spin') ? (
-        <SpinningIcon color={color} qeId='utils-sync-status-title' />
+        <SpinningIcon color={color} dataQeId='utils-sync-status-title' />
     ) : (
-        <React.Fragment>
-            <i qe-id='utils-sync-status-title' title={title} className={className} style={{color}} /> {label && title}
-        </React.Fragment>
+        <>
+            <i data-qe-id='utils-sync-status-title' title={title} className={className} style={{color}} /> {label && title}
+        </>
     );
 };
 
@@ -467,7 +467,7 @@ export const deletePopup = async (
                 </p>
 
                 {(childResources || []).length > 0 ? (
-                    <React.Fragment>
+                    <>
                         <p>Dependent resources:</p>
                         <ul>
                             {childResources.slice(0, 4).map((child, i) => (
@@ -484,7 +484,7 @@ export const deletePopup = async (
                             )}
                             {childResources.length > 5 ? <li key='N'>and {childResources.slice(4).length} more.</li> : ''}
                         </ul>
-                    </React.Fragment>
+                    </>
                 ) : (
                     ''
                 )}
@@ -969,9 +969,9 @@ export const HealthStatusIcon = ({state, noSpin}: {state: appModels.HealthStatus
         title = `${state.status}: ${state.message}`;
     }
     return icon.includes('fa-spin') ? (
-        <SpinningIcon color={color} qeId='utils-health-status-title' />
+        <SpinningIcon color={color} dataQeId='utils-health-status-title' />
     ) : (
-        <i qe-id='utils-health-status-title' title={title} className={'fa ' + icon + ' utils-health-status-icon'} style={{color}} />
+        <i data-qe-id='utils-health-status-title' title={title} className={'fa ' + icon + ' utils-health-status-icon'} style={{color}} />
     );
 };
 
@@ -997,9 +997,9 @@ export const PodHealthIcon = ({state}: {state: appModels.HealthStatus}) => {
         title = `${state.status}: ${state.message}`;
     }
     return icon.includes('fa-spin') ? (
-        <SpinningIcon color={'white'} qeId='utils-health-status-title' />
+        <SpinningIcon color={'white'} dataQeId='utils-health-status-title' />
     ) : (
-        <i qe-id='utils-health-status-title' title={title} className={'fa ' + icon} />
+        <i data-qe-id='utils-health-status-title' title={title} className={'fa ' + icon} />
     );
 };
 
@@ -1022,7 +1022,7 @@ export const PodPhaseIcon = ({state}: {state: appModels.PodPhase}) => {
             className = 'fa fa-question-circle';
             break;
     }
-    return className.includes('fa-spin') ? <SpinningIcon color={'white'} qeId='utils-pod-phase-icon' /> : <i qe-id='utils-pod-phase-icon' className={className} />;
+    return className.includes('fa-spin') ? <SpinningIcon color={'white'} dataQeId='utils-pod-phase-icon' /> : <i data-qe-id='utils-pod-phase-icon' className={className} />;
 };
 
 export const ResourceResultIcon = ({resource}: {resource: appModels.ResourceResult}) => {
@@ -1081,7 +1081,7 @@ export const ResourceResultIcon = ({resource}: {resource: appModels.ResourceResu
         if (resource.message) {
             title = `${resource.hookPhase}: ${resource.message}`;
         }
-        return className.includes('fa-spin') ? <SpinningIcon color={color} qeId='utils-resource-result-icon' /> : <i title={title} className={className} style={{color}} />;
+        return className.includes('fa-spin') ? <SpinningIcon color={color} dataQeId='utils-resource-result-icon' /> : <i title={title} className={className} style={{color}} />;
     }
     return null;
 };
@@ -1150,9 +1150,9 @@ export const OperationState = ({app, quiet, isButton}: {app: appModels.Applicati
     }
 
     return (
-        <React.Fragment>
+        <>
             <OperationPhaseIcon app={app} isButton={isButton} /> {getOperationStateTitle(app)}
-        </React.Fragment>
+        </>
     );
 };
 
@@ -1478,9 +1478,9 @@ export const SyncWindowStatusIcon = ({state, window}: {state: appModels.SyncWind
     }
 
     return (
-        <React.Fragment>
+        <>
             <i title={current} className={className} style={{color}} /> {current}
-        </React.Fragment>
+        </>
     );
 };
 

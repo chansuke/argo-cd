@@ -27,7 +27,7 @@ const CustomBanner = (props: {
                         {props.content}
                     </a>
                 ) : (
-                    <React.Fragment>{props.content}</React.Fragment>
+                    <>{props.content}</>
                 )}
             </div>
             {!props.permanent ? (
@@ -38,7 +38,7 @@ const CustomBanner = (props: {
                     <button
                         className='ui-banner-button argo-button argo-button--base'
                         onClick={() => services.viewPreferences.updatePreferences({...props.prefs, hideBannerContent: props.content})}>
-                        Don't show again
+                        Don&apos;t show again
                     </button>
                 </>
             ) : null}
@@ -117,7 +117,7 @@ export const Banner = (props: React.Props<any>) => {
                 const shouldRenderTop = position === 'top' || position === 'both' || (!position && content);
                 const shouldRenderBottom = position === 'bottom' || position === 'both';
                 return (
-                    <React.Fragment>
+                    <>
                         {shouldRenderTop && (
                             <CustomBanner
                                 combinedBannerClassName={'ui-banner ui-banner-top'}
@@ -160,7 +160,7 @@ export const Banner = (props: React.Props<any>) => {
                                 )}
                             </div>
                         )}
-                    </React.Fragment>
+                    </>
                 );
             }}
         </DataLoader>

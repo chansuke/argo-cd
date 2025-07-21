@@ -27,7 +27,7 @@ export const RevisionMetadataPanel = (props: {appName: string; appNamespace: str
                         }}
                         content={
                             <span>
-                                {m.authors && <React.Fragment>Authored by {m.authors}</React.Fragment>}
+                                {m.authors && <>Authored by {m.authors}</>}
                                 <br />
                                 {m.createdAt && <Timestamp date={m.createdAt} />}
                                 <br />
@@ -72,7 +72,7 @@ export const RevisionMetadataPanel = (props: {appName: string; appNamespace: str
                     }}
                     content={
                         <span>
-                            {m.author && <React.Fragment>Authored by {m.author}</React.Fragment>}
+                            {m.author && <>Authored by {m.author}</>}
                             <br />
                             {m.date && <Timestamp date={m.date} />}
                             <br />

@@ -52,7 +52,7 @@ export class Login extends React.Component<RouteComponentProps<{}>, State> {
         return (
             <div className='login'>
                 <div className='login__content show-for-medium'>
-                    <div className='login__text'>Let's get stuff deployed!</div>
+                    <div className='login__text'>Let&apos;s get stuff deployed!</div>
                     <div className='argo__logo' />
                 </div>
                 <div className='login__box'>
@@ -118,7 +118,7 @@ export class Login extends React.Component<RouteComponentProps<{}>, State> {
                         <div className='argo-form-row__error-msg'>Login is disabled. Please contact your system administrator.</div>
                     )}
                     <div className='login__footer'>
-                        <a href='https://argoproj.io' target='_blank'>
+                        <a href='https://argoproj.io' target='_blank' rel='noreferrer'>
                             <img className='logo-image' src='assets/images/argologo.svg' alt='argo' />
                         </a>
                     </div>

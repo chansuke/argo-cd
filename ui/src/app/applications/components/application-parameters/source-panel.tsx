@@ -180,9 +180,9 @@ export const SourcePanel = (props: {
                                             <div className='columns small-2'>
                                                 <div style={{paddingTop: '1.5em'}}>
                                                     {(repoInfo && (
-                                                        <React.Fragment>
+                                                        <>
                                                             <span>{(repoInfo.type || 'git').toUpperCase()}</span> <i className='fa fa-check' />
-                                                        </React.Fragment>
+                                                        </>
                                                     )) || (
                                                         <DropDownMenu
                                                             anchor={() => (
@@ -212,7 +212,7 @@ export const SourcePanel = (props: {
                                             </div>
                                         </div>
                                         {(repoType === 'oci' && (
-                                            <React.Fragment>
+                                            <>
                                                 <RevisionFormField
                                                     formApi={api}
                                                     helpIconTop={'2.5em'}
@@ -247,10 +247,10 @@ export const SourcePanel = (props: {
                                                 <div className='argo-form-row'>
                                                     <FormField formApi={api} label='Ref' field={'spec.source.ref'} component={Text}></FormField>
                                                 </div>
-                                            </React.Fragment>
+                                            </>
                                         )) ||
                                             (repoType === 'git' && (
-                                                <React.Fragment>
+                                                <>
                                                     <RevisionFormField
                                                         formApi={api}
                                                         helpIconTop={'2.5em'}
@@ -288,7 +288,7 @@ export const SourcePanel = (props: {
                                                     <div className='argo-form-row'>
                                                         <FormField formApi={api} label='Ref' field={'spec.source.ref'} component={Text}></FormField>
                                                     </div>
-                                                </React.Fragment>
+                                                </>
                                             )) || (
                                                 <DataLoader
                                                     input={{repoURL: api.getFormState().values.spec.source.repoURL}}
@@ -377,7 +377,7 @@ export const SourcePanel = (props: {
                                                 }
                                             }
                                             return (
-                                                <React.Fragment>
+                                                <>
                                                     <DropDownMenu
                                                         anchor={() => (
                                                             <p>
@@ -401,7 +401,7 @@ export const SourcePanel = (props: {
                                                             api.setAllValues(updatedApp);
                                                         }}
                                                     />
-                                                </React.Fragment>
+                                                </>
                                             );
                                         }}
                                     </DataLoader>

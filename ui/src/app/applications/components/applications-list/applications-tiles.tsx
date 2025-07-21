@@ -199,7 +199,7 @@ export const ApplicationTiles = ({applications, syncApplication, refreshApplicat
                                                         <div className='columns small-3' title='Status:'>
                                                             Status:
                                                         </div>
-                                                        <div className='columns small-9' qe-id='applications-tiles-health-status'>
+                                                        <div className='columns small-9' data-qe-id='applications-tiles-health-status'>
                                                             <AppUtils.HealthStatusIcon state={app.status.health} /> {app.status.health.status}
                                                             &nbsp;
                                                             <AppUtils.ComparisonStatusIcon status={app.status.sync.status} /> {app.status.sync.status}
@@ -273,7 +273,7 @@ export const ApplicationTiles = ({applications, syncApplication, refreshApplicat
                                                         <div className='columns applications-list__entry--actions'>
                                                             <a
                                                                 className='argo-button argo-button--base'
-                                                                qe-id='applications-tiles-button-sync'
+                                                                data-qe-id='applications-tiles-button-sync'
                                                                 onClick={e => {
                                                                     e.stopPropagation();
                                                                     syncApplication(app.metadata.name, app.metadata.namespace);
@@ -284,7 +284,7 @@ export const ApplicationTiles = ({applications, syncApplication, refreshApplicat
                                                             <Tooltip className='custom-tooltip' content={'Refresh'}>
                                                                 <a
                                                                     className='argo-button argo-button--base'
-                                                                    qe-id='applications-tiles-button-refresh'
+                                                                    data-qe-id='applications-tiles-button-refresh'
                                                                     {...AppUtils.refreshLinkAttrs(app)}
                                                                     onClick={e => {
                                                                         e.stopPropagation();
@@ -298,7 +298,7 @@ export const ApplicationTiles = ({applications, syncApplication, refreshApplicat
                                                             <Tooltip className='custom-tooltip' content={'Delete'}>
                                                                 <a
                                                                     className='argo-button argo-button--base'
-                                                                    qe-id='applications-tiles-button-delete'
+                                                                    data-qe-id='applications-tiles-button-delete'
                                                                     onClick={e => {
                                                                         e.stopPropagation();
                                                                         deleteApplication(app.metadata.name, app.metadata.namespace);

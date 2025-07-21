@@ -9,7 +9,7 @@ export const DeepLinks = (props: {links: LinkInfo[]}) => {
             {(links || []).map((link: LinkInfo) => (
                 <div key={link.title} style={{display: 'flex', alignItems: 'center', height: '35px'}}>
                     {link.url.startsWith('http') ? (
-                        <a href={link.url} target='_blank' rel='noopener' style={{display: 'flex', alignItems: 'center', marginRight: '7px'}}>
+                        <a href={link.url} target='_blank' rel='noreferrer' style={{display: 'flex', alignItems: 'center', marginRight: '7px'}}>
                             <i className={`fa ${link.iconClass ? link.iconClass : 'fa-external-link-alt'} custom-style-link`} style={{marginRight: '5px'}} />
                             <div>{link.title}</div>
                         </a>

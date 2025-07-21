@@ -216,13 +216,13 @@ export class ApplicationDetails extends React.Component<RouteComponentProps<{app
 
     private getContent(application: models.Application, source: models.ApplicationSource, revisions: string[], revision: string) {
         const renderCommitMessage = (message: string) =>
-            message.split(/\s/).map(part =>
+            message.split(/\s/).map((part, index) =>
                 urlPattern.test(part) ? (
-                    <a href={part} target='_blank' rel='noopener noreferrer' style={{overflowWrap: 'anywhere', wordBreak: 'break-word'}}>
+                    <a key={index} href={part} target='_blank' rel='noopener noreferrer' style={{overflowWrap: 'anywhere', wordBreak: 'break-word'}}>
                         {part}{' '}
                     </a>
                 ) : (
-                    part + ' '
+                    <span key={index}>{part + ' '}</span>
                 )
             );
 
@@ -1104,7 +1104,7 @@ export class ApplicationDetails extends React.Component<RouteComponentProps<{app
             {
                 iconClassName: classNames('fa fa-redo', {'status-icon--spin': !!refreshing}),
                 title: (
-                    <React.Fragment>
+                    <>
                         <ActionMenuItem actionLabel='Refresh' />{' '}
                         <DropDownMenu
                             items={[
@@ -1115,7 +1115,7 @@ export class ApplicationDetails extends React.Component<RouteComponentProps<{app
                             ]}
                             anchor={() => <i className='fa fa-caret-down' />}
                         />
-                    </React.Fragment>
+                    </>
                 ),
                 disabled: !!refreshing,
                 action: () => {

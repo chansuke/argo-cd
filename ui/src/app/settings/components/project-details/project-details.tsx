@@ -633,9 +633,9 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                 <EditablePanel
                     save={item => this.saveProject(item)}
                     values={proj}
-                    title={<React.Fragment>SOURCE REPOSITORIES {helpTip('Git repositories where application manifests are permitted to be retrieved from')}</React.Fragment>}
+                    title={<>SOURCE REPOSITORIES {helpTip('Git repositories where application manifests are permitted to be retrieved from')}</>}
                     view={
-                        <React.Fragment>
+                        <>
                             {proj.spec.sourceRepos
                                 ? proj.spec.sourceRepos.map((repo, i) => (
                                       <div className='row white-box__details-row' key={i}>
@@ -643,12 +643,12 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                       </div>
                                   ))
                                 : emptyMessage('source repositories')}
-                        </React.Fragment>
+                        </>
                     }
                     edit={formApi => (
                         <DataLoader load={() => services.repos.list()}>
                             {repos => (
-                                <React.Fragment>
+                                <>
                                     {(formApi.values.spec.sourceRepos || []).map((_: Project, i: number) => (
                                         <div className='row white-box__details-row' key={i}>
                                             <div className='columns small-12'>
@@ -667,7 +667,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                         onClick={() => formApi.setValue('spec.sourceRepos', (formApi.values.spec.sourceRepos || []).concat('*'))}>
                                         ADD SOURCE
                                     </button>
-                                </React.Fragment>
+                                </>
                             )}
                         </DataLoader>
                     )}
@@ -676,9 +676,9 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
 
                 <EditablePanel
                     values={scopedProj}
-                    title={<React.Fragment>SCOPED REPOSITORIES{helpTip('Git repositories where application manifests are permitted to be retrieved from')}</React.Fragment>}
+                    title={<>SCOPED REPOSITORIES{helpTip('Git repositories where application manifests are permitted to be retrieved from')}</>}
                     view={
-                        <React.Fragment>
+                        <>
                             {scopedProj.repositories && scopedProj.repositories.length
                                 ? scopedProj.repositories.map((repo, i) => (
                                       <div className='row white-box__details-row' key={i}>
@@ -686,7 +686,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                       </div>
                                   ))
                                 : emptyMessage('source repositories')}
-                        </React.Fragment>
+                        </>
                     }
                     items={[]}
                 />
@@ -696,11 +696,9 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                             <EditablePanel
                                 save={item => this.saveProject(item)}
                                 values={proj}
-                                title={
-                                    <React.Fragment>SOURCE NAMESPACES {helpTip('Kubernetes namespaces where application resources are allowed to be created in')}</React.Fragment>
-                                }
+                                title={<>SOURCE NAMESPACES {helpTip('Kubernetes namespaces where application resources are allowed to be created in')}</>}
                                 view={
-                                    <React.Fragment>
+                                    <>
                                         {proj.spec.sourceNamespaces
                                             ? proj.spec.sourceNamespaces.map((namespace, i) => (
                                                   <div className='row white-box__details-row' key={i}>
@@ -708,10 +706,10 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                                   </div>
                                               ))
                                             : emptyMessage('source namespaces')}
-                                    </React.Fragment>
+                                    </>
                                 }
                                 edit={formApi => (
-                                    <React.Fragment>
+                                    <>
                                         {(formApi.values.spec.sourceNamespaces || []).map((_: Project, i: number) => (
                                             <div className='row white-box__details-row' key={i}>
                                                 <div className='columns small-12'>
@@ -728,7 +726,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                             onClick={() => formApi.setValue('spec.sourceNamespaces', (formApi.values.spec.sourceNamespaces || []).concat('*'))}>
                                             ADD SOURCE
                                         </button>
-                                    </React.Fragment>
+                                    </>
                                 )}
                                 items={[]}
                             />
@@ -738,11 +736,11 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                 <EditablePanel
                     save={item => this.saveProject(item)}
                     values={proj}
-                    title={<React.Fragment>DESTINATIONS {helpTip('Cluster and namespaces where applications are permitted to be deployed to')}</React.Fragment>}
+                    title={<>DESTINATIONS {helpTip('Cluster and namespaces where applications are permitted to be deployed to')}</>}
                     view={
-                        <React.Fragment>
+                        <>
                             {proj.spec.destinations ? (
-                                <React.Fragment>
+                                <>
                                     <div className='row white-box__details-row'>
                                         <div className='columns small-4'>Server</div>
                                         <div className='columns small-3'>Name</div>
@@ -755,16 +753,16 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                             <div className='columns small-5'>{dest.namespace}</div>
                                         </div>
                                     ))}
-                                </React.Fragment>
+                                </>
                             ) : (
                                 emptyMessage('destinations')
                             )}
-                        </React.Fragment>
+                        </>
                     }
                     edit={formApi => (
                         <DataLoader load={() => services.clusters.list()}>
                             {clusters => (
-                                <React.Fragment>
+                                <>
                                     <div className='row white-box__details-row'>
                                         <div className='columns small-4'>Server</div>
                                         <div className='columns small-3'>Name</div>
@@ -808,7 +806,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                         }>
                                         ADD DESTINATION
                                     </button>
-                                </React.Fragment>
+                                </>
                             )}
                         </DataLoader>
                     )}
@@ -817,9 +815,9 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
 
                 <EditablePanel
                     values={scopedProj}
-                    title={<React.Fragment>SCOPED CLUSTERS{helpTip('Cluster and namespaces where applications are permitted to be deployed to')}</React.Fragment>}
+                    title={<>SCOPED CLUSTERS{helpTip('Cluster and namespaces where applications are permitted to be deployed to')}</>}
                     view={
-                        <React.Fragment>
+                        <>
                             {scopedProj.clusters && scopedProj.clusters.length
                                 ? scopedProj.clusters.map((cluster, i) => (
                                       <div className='row white-box__details-row' key={i}>
@@ -827,7 +825,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                       </div>
                                   ))
                                 : emptyMessage('destinations')}
-                        </React.Fragment>
+                        </>
                     }
                     items={[]}
                 />
@@ -836,17 +834,17 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                     save={item => this.saveProject(item)}
                     values={proj}
                     title={
-                        <React.Fragment>
+                        <>
                             DESTINATION SERVICE ACCOUNTS{' '}
                             {helpTip(
                                 'Destination Service Accounts holds information about the service accounts to be impersonated for the application sync operation for each destination.'
                             )}
-                        </React.Fragment>
+                        </>
                     }
                     view={
-                        <React.Fragment>
+                        <>
                             {proj.spec.destinationServiceAccounts ? (
-                                <React.Fragment>
+                                <>
                                     <div className='row white-box__details-row'>
                                         <div className='columns small-4'>Server</div>
                                         <div className='columns small-3'>Namespace</div>
@@ -859,16 +857,16 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                             <div className='columns small-5'>{dest.defaultServiceAccount}</div>
                                         </div>
                                     ))}
-                                </React.Fragment>
+                                </>
                             ) : (
                                 emptyMessage('destinationServiceAccount')
                             )}
-                        </React.Fragment>
+                        </>
                     }
                     edit={formApi => (
                         <DataLoader load={() => services.clusters.list()}>
                             {clusters => (
-                                <React.Fragment>
+                                <>
                                     <div className='row white-box__details-row'>
                                         <div className='columns small-4'>Server</div>
                                         <div className='columns small-3'>Namespace</div>
@@ -916,7 +914,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                         }>
                                         ADD DESTINATION SERVICE ACCOUNTS
                                     </button>
-                                </React.Fragment>
+                                </>
                             )}
                         </DataLoader>
                     )}
@@ -934,9 +932,9 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                 <EditablePanel
                     save={item => this.saveProject(item)}
                     values={proj}
-                    title={<React.Fragment>GPG SIGNATURE KEYS {helpTip('IDs of GnuPG keys that commits must be signed with in order to be allowed to sync to')}</React.Fragment>}
+                    title={<>GPG SIGNATURE KEYS {helpTip('IDs of GnuPG keys that commits must be signed with in order to be allowed to sync to')}</>}
                     view={
-                        <React.Fragment>
+                        <>
                             {proj.spec.signatureKeys
                                 ? proj.spec.signatureKeys.map((key, i) => (
                                       <div className='row white-box__details-row' key={i}>
@@ -944,12 +942,12 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                       </div>
                                   ))
                                 : emptyMessage('signature keys')}
-                        </React.Fragment>
+                        </>
                     }
                     edit={formApi => (
                         <DataLoader load={() => services.gpgkeys.list()}>
                             {keys => (
-                                <React.Fragment>
+                                <>
                                     {(formApi.values.spec.signatureKeys || []).map((_: Project, i: number) => (
                                         <div className='row white-box__details-row' key={i}>
                                             <div className='columns small-12'>
@@ -975,7 +973,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                         }>
                                         ADD KEY
                                     </button>
-                                </React.Fragment>
+                                </>
                             )}
                         </DataLoader>
                     )}
@@ -985,10 +983,10 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                 <EditablePanel
                     save={item => this.saveProject(item)}
                     values={proj}
-                    title={<React.Fragment>RESOURCE MONITORING {helpTip('Enables monitoring of top level resources in the application target namespace')}</React.Fragment>}
+                    title={<>RESOURCE MONITORING {helpTip('Enables monitoring of top level resources in the application target namespace')}</>}
                     view={
                         proj.spec.orphanedResources ? (
-                            <React.Fragment>
+                            <>
                                 <p>
                                     <i className={'fa fa-toggle-on'} /> Enabled
                                 </p>
@@ -1002,7 +1000,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                     Application warning conditions are {proj.spec.orphanedResources.warn ? 'enabled' : 'disabled'}.
                                 </p>
                                 {(proj.spec.orphanedResources.ignore || []).length > 0 ? (
-                                    <React.Fragment>
+                                    <>
                                         <p>Resources Ignore List</p>
                                         <div className='row white-box__details-row'>
                                             <div className='columns small-4'>Group</div>
@@ -1016,11 +1014,11 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                                 <div className='columns small-4'>{resource.name}</div>
                                             </div>
                                         ))}
-                                    </React.Fragment>
+                                    </>
                                 ) : (
                                     <p>The resource ignore list is empty</p>
                                 )}
-                            </React.Fragment>
+                            </>
                         ) : (
                             <p>
                                 <i className={'fa fa-toggle-off'} /> Disabled
@@ -1029,7 +1027,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                     }
                     edit={formApi =>
                         formApi.values.spec.orphanedResources ? (
-                            <React.Fragment>
+                            <>
                                 <button className='argo-button argo-button--base' onClick={() => formApi.setValue('spec.orphanedResources', null)}>
                                     DISABLE
                                 </button>
@@ -1093,7 +1091,7 @@ export class ProjectDetails extends React.Component<RouteComponentProps<{name: s
                                     }>
                                     ADD RESOURCE
                                 </button>
-                            </React.Fragment>
+                            </>
                         ) : (
                             <button className='argo-button argo-button--base' onClick={() => formApi.setValue('spec.orphanedResources.ignore', [])}>
                                 ENABLE

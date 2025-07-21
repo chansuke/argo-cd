@@ -220,9 +220,9 @@ export const ApplicationNodeInfo = (props: {
                             delete live.metadata.managedFields;
                         }
                         return (
-                            <React.Fragment>
+                            <>
                                 {showLiveState ? (
-                                    <React.Fragment>
+                                    <>
                                         <div className='application-node-info__checkboxes'>
                                             <Checkbox
                                                 id='hideManagedFields'
@@ -266,7 +266,7 @@ export const ApplicationNodeInfo = (props: {
                                                 )
                                             }
                                         />
-                                    </React.Fragment>
+                                    </>
                                 ) : (
                                     <div className='application-node-info__err_msg'>
                                         Resource not found in cluster:{' '}
@@ -281,7 +281,7 @@ export const ApplicationNodeInfo = (props: {
                                         )}
                                     </div>
                                 )}
-                            </React.Fragment>
+                            </>
                         );
                     }}
                 </DataLoader>
@@ -301,7 +301,7 @@ export const ApplicationNodeInfo = (props: {
             content: (
                 <DataLoader load={() => services.viewPreferences.getPreferences()}>
                     {pref => (
-                        <React.Fragment>
+                        <>
                             <div className='application-node-info__checkboxes'>
                                 <Checkbox
                                     id='enableWordWrap'
@@ -318,7 +318,7 @@ export const ApplicationNodeInfo = (props: {
                                 <label htmlFor='enableWordWrap'>Enable Word Wrap</label>
                             </div>
                             <YamlEditor enableWordWrap={pref.appDetails.enableWordWrap} input={props.controlled.state.targetState} hideModeButtons={true} />
-                        </React.Fragment>
+                        </>
                     )}
                 </DataLoader>
             )

@@ -141,7 +141,7 @@ export const Filter = (props: FilterProps) => {
                 ) : props.error ? (
                     <FilterError retry={props.retry} />
                 ) : (
-                    <React.Fragment>
+                    <>
                         {props.field && (
                             <Autocomplete
                                 placeholder={props.label}
@@ -171,7 +171,7 @@ export const Filter = (props: FilterProps) => {
                                 option={opt}
                             />
                         ))}
-                    </React.Fragment>
+                    </>
                 ))}
         </div>
     );

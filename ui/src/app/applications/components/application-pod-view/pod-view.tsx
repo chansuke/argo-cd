@@ -74,7 +74,7 @@ export class PodView extends React.Component<PodViewProps> {
                     }
 
                     return (
-                        <React.Fragment>
+                        <>
                             <div className='pod-view__settings'>
                                 <div className='pod-view__settings__section'>
                                     GROUP BY:&nbsp;
@@ -262,7 +262,7 @@ export class PodView extends React.Component<PodViewProps> {
                                     <h5>Try switching to tree or list view</h5>
                                 </EmptyState>
                             )}
-                        </React.Fragment>
+                        </>
                     );
                 }}
             </DataLoader>
@@ -273,9 +273,9 @@ export class PodView extends React.Component<PodViewProps> {
         const podPrefs = prefs.appDetails.podView || ({} as PodViewPreferences);
         return orders.map(order => ({
             title: (
-                <React.Fragment>
+                <>
                     {podPrefs.sortOrder === order && <i className='fa fa-check' />} {labelForSortOrder[order]}{' '}
-                </React.Fragment>
+                </>
             ),
             action: () => {
                 this.appContext.apis.navigation.goto('.', {podSortOrder: order});
@@ -293,9 +293,9 @@ export class PodView extends React.Component<PodViewProps> {
         const podPrefs = prefs.appDetails.podView || ({} as PodViewPreferences);
         return modes.map(mode => ({
             title: (
-                <React.Fragment>
+                <>
                     {podPrefs.sortMode === mode && <i className='fa fa-check' />} {labelForSortMode[mode]}{' '}
-                </React.Fragment>
+                </>
             ),
             action: () => {
                 this.appContext.apis.navigation.goto('.', {podSortMode: mode});
@@ -469,7 +469,7 @@ function renderStats(info: HostResourceInfo) {
             <Tooltip
                 key={info.resourceName}
                 content={
-                    <React.Fragment>
+                    <>
                         <div>{info.resourceName.toUpperCase()}:</div>
                         <div className='pod-view__node__pod__stat-tooltip'>
                             <div>Requests:</div>
@@ -483,7 +483,7 @@ function renderStats(info: HostResourceInfo) {
                             </div>
                             <div>Capacity: {formatMetric(info.resourceName, info.capacity)}</div>
                         </div>
-                    </React.Fragment>
+                    </>
                 }>
                 <div className='pod-view__node__pod__stat__bar'>
                     <div className='pod-view__node__pod__stat__bar--fill pod-view__node__pod__stat__bar--neighbors' style={{height: `${neighborsHeight}%`}} />

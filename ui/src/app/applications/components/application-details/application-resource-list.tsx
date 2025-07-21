@@ -141,9 +141,9 @@ export const ApplicationResourceList = (props: ApplicationResourceListProps) => 
                                         </Tooltip>
                                         <div className='columns small-2 xxxlarge-1'>
                                             {res.health && (
-                                                <React.Fragment>
+                                                <>
                                                     <HealthStatusIcon state={res.health} /> {res.health.status} &nbsp;
-                                                </React.Fragment>
+                                                </>
                                             )}
                                             {res.status && <ComparisonStatusIcon status={res.status} resource={res} label={true} />}
                                             {res.hook && <i title='Resource lifecycle hook' className='fa fa-anchor' />}

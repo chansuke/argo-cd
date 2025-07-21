@@ -63,7 +63,7 @@ export function getTheme(theme: string) {
  * @param cb callback for theme change
  * @returns destroy listener
  */
-export const useSystemTheme = (cb: (theme: string) => void) => {
+export const listenToSystemTheme = (cb: (theme: string) => void) => {
     const dark = window.matchMedia(colorSchemes.dark);
     const light = window.matchMedia(colorSchemes.light);
 
@@ -88,7 +88,7 @@ export const useTheme = (props: {theme: string}) => {
 
         // change theme by system, only register listener when theme is auto
         if (props.theme === 'auto') {
-            destroyListener = useSystemTheme(systemTheme => {
+            destroyListener = listenToSystemTheme(systemTheme => {
                 setTheme(systemTheme);
             });
         }
